@@ -45,7 +45,7 @@ export async function generateSearchQueries(
         searchQueries: z
           .array(z.string())
           .describe(
-            "The search queries that can be used to find the most relevant content which can be used to write the comprehensive report on the given topic. (max 2 queries)"
+            "The search queries that can be used to find the most relevant content which can be used to write the comprehensive report on the given topic. (max 3 queries)"
           ),
       }),
       activityType: "planning"
