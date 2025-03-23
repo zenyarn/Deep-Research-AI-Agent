@@ -54,6 +54,8 @@ cd Deep-Research-AI-Agent
 
 ### 2. Install Dependencies
 
+> **NOTE:** When installing the required dependencies, use the `--legacy-peer-deps` flag if you encounter any issues with inter-dependent dependencies.
+
 ```bash
 npm install
 # or
