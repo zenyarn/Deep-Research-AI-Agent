@@ -20,9 +20,9 @@ interface DeepResearchActions {
   setCurrentQuestion: (index: number) => void;
   setIsCompleted: (isCompleted: boolean) => void;
   setIsLoading: (isLoading: boolean) => void;
-  setActivities: (activities: Activity[]) => void,
-  setSources: (sources: Source[]) => void,
-  setReport: (report: string) => void,
+  setActivities: (activities: Activity[]) => void;
+  setSources: (sources: Source[]) => void;
+  setReport: (report: string) => void;
 }
 
 const initialState: DeepResearchState = {

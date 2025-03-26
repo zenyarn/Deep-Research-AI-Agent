@@ -18,13 +18,16 @@ Format the summary in markdown using:
 - Code blocks for any technical examples
 - Block quotes for direct quotations`;
 
-export const getExtractionPrompt = (content: string, topic: string, clarificationsText: string) => 
+export const getExtractionPrompt = (
+  content: string,
+  topic: string,
+  clarificationsText: string
+) =>
   `Here is the content: <content>${content}</content> and here is the topic: <topic>${topic}</topic>,
   <clarifications>${clarificationsText}</clarifications>
   `;
 
-
-  export const ANALYSIS_SYSTEM_PROMPT = `You are an expert research analyst. Your task is to analyze the provided content and determine if it contains enough substantive information to create a comprehensive report on the given topic.
+export const ANALYSIS_SYSTEM_PROMPT = `You are an expert research analyst. Your task is to analyze the provided content and determine if it contains enough substantive information to create a comprehensive report on the given topic.
 
   Remember the current year is ${new Date().getFullYear()}.
   
@@ -54,7 +57,15 @@ export const getExtractionPrompt = (content: string, topic: string, clarificatio
   
   On iteration MAX_ITERATIONS-1 or later, strongly consider marking as sufficient unless critical information is completely missing.`;
 
-export const getAnalysisPrompt = (contentText: string, topic: string, clarificationsText: string, currentQueries: string[], currentIteration: number, maxIterations: number, findingsLength: number) => 
+export const getAnalysisPrompt = (
+  contentText: string,
+  topic: string,
+  clarificationsText: string,
+  currentQueries: string[],
+  currentIteration: number,
+  maxIterations: number,
+  findingsLength: number
+) =>
   `Analyze the following content and determine if it's sufficient for a comprehensive report:
 
 Topic: <topic>${topic}</topic>
@@ -71,10 +82,9 @@ Previous queries:
 Current Research State:
 - This is iteration ${currentIteration} of a maximum ${maxIterations} iterations
 - We have collected ${findingsLength} distinct findings so far
-- Previous attempts at information gathering have yielded ${contentText.length} characters of content`;
-
-
-
+- Previous attempts at information gathering have yielded ${
+    contentText.length
+  } characters of content`;
 
 export const PLANNING_SYSTEM_PROMPT = `
 You are a senior project manager. You are responsible for the research on the topic.
@@ -85,13 +95,10 @@ You need to find the most relevant content on the given topic. Based on the give
 
 You need to generate the search queries in a way that can be used to find the most relevant content which can be used to write the comprehensive report.
 `;
-export const getPlanningPrompt = (topic: string, clarificationsText: string) => 
+export const getPlanningPrompt = (topic: string, clarificationsText: string) =>
   `Here is the topic: <topic>${topic}</topic> and
 Here is the topic clarifications:
 ${clarificationsText}`;
-
-
-
 
 export const REPORT_SYSTEM_PROMPT = `
 You are a senior technical documentation writer with deep expertise across many technical domains.
@@ -125,11 +132,14 @@ Remember the current year is ${new Date().getFullYear()}.
 
 You must provide the report in markdown format. Enclose the report in <report> tags.`;
 
-
-export const getReportPrompt = (contentText: string, topic: string, clarificationsText: string) => 
+export const getReportPrompt = (
+  contentText: string,
+  topic: string,
+  clarificationsText: string
+) =>
   `Please generate the comprehensive report using the content.
 Here is the topic: <topic>${topic}</topic>
 Here is the topic clarifications:
 ${clarificationsText}
 I've gathered the following research findings to help with this report:
-<research_findings>${contentText}</research_findings>`; 
+<research_findings>${contentText}</research_findings>`;
